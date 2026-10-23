@@ -1,4 +1,4 @@
-const message = 'Hello from Jenkins CI/CD version 2';
+const message = 'Hello from Jenkins CI/CD version 3';
 
 function renderPage(build = 'local') {
   return `<!doctype html>
@@ -18,4 +18,5 @@ padding:48px;border-radius:16px}h1{font-size:36px}p{font-size:20px}
 }
 
 module.exports = { message, renderPage };
+
 
