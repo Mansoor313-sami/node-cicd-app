@@ -14,7 +14,7 @@ padding:48px;border-radius:16px}h1{font-size:36px}p{font-size:20px}
 </style>
 <main><p class="label">CSC418 DEVOPS LAB</p>
 <h1>${message}</h1><p>A Node.js app delivered by Jenkins.</p>
-<p>Student: Mansoor Ahmad</p><p>Course: CSC418 DevOps - automated testing and safe deployment.</p><p>Build: <strong>${build}</strong></p></main></html>`;
+<p>Student: Missing name</p><p>Course: CSC418 DevOps - automated testing and safe deployment.</p><p>Build: <strong>${build}</strong></p></main></html>`;
 }
 
 module.exports = { message, renderPage };
