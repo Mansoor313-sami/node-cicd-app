@@ -32,6 +32,14 @@ pipeline {
         archiveArtifacts artifacts: 'dist/**', fingerprint: true
       }
     }
+    stage('Approval') {
+      when { expression { params.DEPLOY } }
+      steps {
+        timeout(time: 2, unit: 'MINUTES') {
+          input message: 'Deploy this tested build?', ok: 'Deploy'
+        }
+      }
+    }
     stage('Deploy') {
       when { expression { params.DEPLOY } }
       steps { bat 'npm.cmd run deploy -- declarative' }

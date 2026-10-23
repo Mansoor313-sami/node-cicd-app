@@ -19,12 +19,17 @@ node {
         stage('Archive') {
           archiveArtifacts artifacts: 'dist/**', fingerprint: true
         }
-        stage('Deploy') {
-          if (params.DEPLOY != false) {
-            bat 'npm.cmd run deploy -- scripted'
-          } else {
-            echo 'Deployment skipped by parameter'
+        if (params.DEPLOY != false) {
+          stage('Approval') {
+            timeout(time: 2, unit: 'MINUTES') {
+              input message: 'Deploy this tested build?', ok: 'Deploy'
+            }
           }
+          stage('Deploy') {
+            bat 'npm.cmd run deploy -- scripted'
+          }
+        } else {
+          echo 'Approval and deployment skipped by parameter'
         }
         echo 'CI passed. Check the Deploy stage for publication.'
       } catch (err) {
