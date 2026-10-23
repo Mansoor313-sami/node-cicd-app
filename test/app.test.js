@@ -11,3 +11,9 @@ test('the page contains the heading and build number', () => {
   assert.ok(html.includes(`<h1>${message}</h1>`));
   assert.ok(html.includes('<strong>42</strong>'));
 });
+
+test('the page identifies the student and course message', () => {
+  const html = renderPage('42');
+  assert.ok(html.includes('Student: Mansoor Ahmad'));
+  assert.ok(html.includes('Course: CSC418 DevOps - automated testing and safe deployment.'));
+});
